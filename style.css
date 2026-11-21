@@ -1154,3 +1154,207 @@ html {
 #minhaConta {
     scroll-margin-top: 90px;
 }
+
+/* ==========================================
+   NAVEGAÇÃO LATERAL — RECOLHIDA / EXPANDIDA
+   ========================================== */
+
+@media (min-width: 851px) {
+
+    #areaAplicacao {
+        margin-left: 90px;
+        width: calc(100% - 110px);
+        transition: margin-left 0.25s ease, width 0.25s ease;
+    }
+
+    .navegacao-lateral {
+        width: 72px;
+        padding: 30px 10px;
+        overflow: hidden;
+        transition: width 0.25s ease;
+    }
+
+    .navegacao-lateral .nav-titulo {
+        opacity: 0;
+        white-space: nowrap;
+        transition: opacity 0.2s ease;
+    }
+
+    .navegacao-lateral .nav-item {
+        justify-content: center;
+        gap: 0;
+        padding: 13px 10px;
+    }
+
+    .navegacao-lateral .nav-item > span:not(.nav-icone) {
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: opacity 0.2s ease, max-width 0.25s ease;
+    }
+
+    .navegacao-lateral:hover {
+        width: 225px;
+    }
+
+    .navegacao-lateral:hover .nav-titulo {
+        opacity: 1;
+    }
+
+    .navegacao-lateral:hover .nav-item {
+        justify-content: flex-start;
+        gap: 13px;
+    }
+
+    .navegacao-lateral:hover .nav-item > span:not(.nav-icone) {
+        max-width: 160px;
+        opacity: 1;
+    }
+
+    #areaAplicacao:has(.navegacao-lateral:hover) {
+        margin-left: 250px;
+        width: calc(100% - 270px);
+    }
+}
+
+@media (max-width: 850px) {
+
+    .navegacao-lateral .nav-item > span:not(.nav-icone) {
+        max-width: none;
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   ORÇAFÁCIL — PAINEL MODERNO AZUL
+   ========================================== */
+
+#areaTrabalho > .intro {
+    padding: 12px 4px 22px;
+    margin-bottom: 18px;
+}
+
+#areaTrabalho > .intro h1 {
+    font-size: 32px;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+#areaTrabalho > .intro > p:last-child {
+    font-size: 15px;
+    color: #718096;
+}
+
+/* Cartão principal de atalhos */
+#areaTrabalho > .intro + .painel {
+    background: #ffffff;
+    border: 1px solid #e1e8f2;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(25, 55, 95, 0.045);
+}
+
+#areaTrabalho > .intro + .painel .acoes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin: 0;
+}
+
+/* Cartões dos botões */
+#areaTrabalho > .intro + .painel .acoes button {
+    min-height: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    padding: 17px;
+    border-radius: 11px;
+    border: 1px solid #e1eaf7;
+    background: #f8faff;
+    color: #24446f;
+    font-size: 14px;
+    text-align: left;
+    transition: 0.2s ease;
+}
+
+#areaTrabalho > .intro + .painel .acoes button::before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: #e6efff;
+    color: #174ea6;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+#areaTrabalho > .intro + .painel #novoOrcamento::before {
+    content: "+";
+}
+
+#areaTrabalho > .intro + .painel #abrirClientes::before {
+    content: "♙";
+}
+
+#areaTrabalho > .intro + .painel #abrirHistorico::before {
+    content: "◷";
+}
+
+#areaTrabalho > .intro + .painel #exportarBackup::before {
+    content: "↓";
+}
+
+#areaTrabalho > .intro + .painel #importarBackup::before {
+    content: "↑";
+}
+
+#areaTrabalho > .intro + .painel .acoes button:hover {
+    background: #edf4ff;
+    border-color: #a9c6ef;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(23, 78, 166, 0.07);
+}
+
+/* Destaque para criar orçamento */
+#areaTrabalho > .intro + .painel #novoOrcamento {
+    background: #174ea6;
+    color: #ffffff;
+    border-color: #174ea6;
+}
+
+#areaTrabalho > .intro + .painel #novoOrcamento::before {
+    background: rgba(255,255,255,0.17);
+    color: #ffffff;
+}
+
+#areaTrabalho > .intro + .painel #novoOrcamento:hover {
+    background: #10356f;
+}
+
+/* Telemóveis e tablets */
+@media (max-width: 750px) {
+    #areaTrabalho > .intro + .painel .acoes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    #areaTrabalho > .intro + .painel {
+        padding: 16px;
+    }
+
+    #areaTrabalho > .intro + .painel .acoes {
+        grid-template-columns: 1fr;
+    }
+
+    #areaTrabalho > .intro + .painel .acoes button {
+        min-height: 75px;
+        flex-direction: row;
+        align-items: center;
+    }
+}

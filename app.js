@@ -2649,6 +2649,14 @@
             });
         });
 
+        campo("abrirClientes").addEventListener("click", () => {
+            abrirPagina("clientes");
+
+            campo("gestaoClientes").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
         // NOVO ORÇAMENTO
 
         campo("novoOrcamento").addEventListener(
@@ -2709,6 +2717,8 @@
                     guardarRascunho();
 
                     campo("historicoOrcamentos").hidden = true;
+
+                    abrirPagina("orcamentos");
 
                     mostrarMensagem(
                         "Novo orçamento criado. O número será atribuído quando for guardado."
@@ -3102,30 +3112,84 @@
         );
     };
 
+
+    // ==========================================
+    // NAVEGAÇÃO DA BARRA LATERAL
+    // ==========================================
+
+    function abrirPagina(seccao) {
+        const area = document.getElementById("areaTrabalho");
+        const conta = document.getElementById("minhaConta");
+
+        if (!area || !conta) return;
+
+        const intro = area.querySelector(".intro");
+        const paineis = area.querySelectorAll(":scope > .painel");
+        const historico = document.getElementById("historicoOrcamentos");
+        const clientes = document.getElementById("gestaoClientes");
+        const formulario = document.getElementById("formOrcamento");
+        const aviso = area.querySelector(".aviso");
+
+        // Esconder todas as áreas
+        area.hidden = false;
+        conta.hidden = true;
+
+        if (intro) intro.hidden = true;
+        paineis.forEach(painel => painel.hidden = true);
+        if (historico) historico.hidden = true;
+        if (clientes) clientes.hidden = true;
+        if (formulario) formulario.hidden = true;
+        if (aviso) aviso.hidden = true;
+
+        // Mostrar apenas a área selecionada
+        switch (seccao) {
+            case "painel":
+                if (intro) intro.hidden = false;
+                if (paineis.length > 0) paineis[0].hidden = false;
+                break;
+
+            case "orcamentos":
+                if (formulario) formulario.hidden = false;
+                if (aviso) aviso.hidden = false;
+                break;
+
+            case "clientes":
+                if (clientes) clientes.hidden = false;
+                if (typeof mostrarClientes === "function") {
+                    mostrarClientes();
+                }
+                break;
+
+            case "historico":
+                if (historico) historico.hidden = false;
+                if (typeof mostrarHistorico === "function") {
+                    mostrarHistorico();
+                }
+                break;
+
+            case "conta":
+                area.hidden = true;
+                conta.hidden = false;
+                break;
+        }
+    }
+
     document.querySelectorAll(".nav-item").forEach(item => {
         item.addEventListener("click", function (event) {
+            event.preventDefault();
+
             document.querySelectorAll(".nav-item").forEach(link => {
                 link.classList.remove("ativo");
             });
 
             this.classList.add("ativo");
-
-            if (this.dataset.seccao === "historico") {
-                event.preventDefault();
-
-                const historico = document.getElementById("historicoOrcamentos");
-                const botaoHistorico = document.getElementById("abrirHistorico");
-
-                if (historico && historico.hidden && botaoHistorico) {
-                    botaoHistorico.click();
-                }
-
-                setTimeout(() => {
-                    historico?.scrollIntoView({ behavior: "smooth" });
-                }, 150);
-            }
+            abrirPagina(this.dataset.seccao);
         });
     });
+
+    // Abrir o painel inicial por defeito
+    abrirPagina("painel");
+
 
     // Fim da aplicação
 })();
