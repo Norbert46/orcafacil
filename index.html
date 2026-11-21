@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OrçaFácil | Orçamentos de construção</title>
+
+    <meta name="description"
+        content="Cria orçamentos profissionais para trabalhos de construção, reparação e manutenção.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <a class="logo" href="#">OrçaFácil<span>.</span></a>
+        <span class="subtitulo">Orçamentos para profissionais</span>
+    </header>
+
+    <!-- PÁGINA PÚBLICA E ÁREA DE AUTENTICAÇÃO -->
+    <section id="areaAutenticacao" class="pagina-publica" hidden>
+
+        <section class="hero">
+            <div class="hero-conteudo">
+                <p class="etiqueta">ORÇAMENTOS PROFISSIONAIS, SEM COMPLICAÇÕES</p>
+
+                <h1>Cria orçamentos de construção em minutos.</h1>
+
+                <p class="hero-descricao">
+                    Organiza os teus trabalhos, calcula o IVA e apresenta propostas
+                    profissionais aos teus clientes. Tudo numa só ferramenta.
+                </p>
+
+                <div class="hero-acoes">
+                    <a class="botao-cta" href="#emailAcesso">Experimentar gratuitamente</a>
+                    <a class="botao-secundario" href="#funcionalidades">Conhecer funcionalidades</a>
+                </div>
+
+                <p class="nota-preco">14 dias gratuitos · Depois 9,90 €/mês</p>
+            </div>
+
+            <div class="hero-cartao" aria-label="Exemplo ilustrativo de orçamento">
+                <div class="documento-topo">
+                    <span>OrçaFácil.</span>
+                    <span class="documento-selo">ORÇAMENTO</span>
+                </div>
+
+                <p class="documento-legenda">PROPOSTA COMERCIAL</p>
+
+                <h2>Remodelação de cozinha</h2>
+
+                <div class="documento-linha">
+                    <span>Preparação e proteção</span>
+                    <strong>120,00 €</strong>
+                </div>
+
+                <div class="documento-linha">
+                    <span>Aplicação de revestimento</span>
+                    <strong>450,00 €</strong>
+                </div>
+
+                <div class="documento-linha">
+                    <span>Mão de obra</span>
+                    <strong>380,00 €</strong>
+                </div>
+
+                <div class="documento-total">
+                    <span>Total com IVA</span>
+                    <strong>1 168,50 €</strong>
+                </div>
+
+                <p class="documento-rodape">Exemplo meramente ilustrativo</p>
+            </div>
+        </section>
+
+        <section id="funcionalidades" class="secao-comercial">
+            <div class="titulo-comercial">
+                <p class="etiqueta">TUDO MAIS ORGANIZADO</p>
+
+                <h2>O essencial para preparar as tuas propostas.</h2>
+
+                <p>
+                    Menos tempo em tarefas administrativas.
+                    Mais tempo para o teu trabalho.
+                </p>
+            </div>
+
+            <div class="cartoes-funcionalidades">
+
+                <article class="cartao-funcionalidade">
+                    <span class="icone-funcionalidade">01</span>
+                    <h3>Orçamentos profissionais</h3>
+                    <p>
+                        Regista os dados do cliente, os trabalhos,
+                        materiais, quantidades e preços.
+                    </p>
+                </article>
+
+                <article class="cartao-funcionalidade">
+                    <span class="icone-funcionalidade">02</span>
+                    <h3>Cálculo automático do IVA</h3>
+                    <p>
+                        Aplica as taxas de IVA disponíveis e consulta
+                        os totais de forma imediata.
+                    </p>
+                </article>
+
+                <article class="cartao-funcionalidade">
+                    <span class="icone-funcionalidade">03</span>
+                    <h3>PDF pronto a apresentar</h3>
+                    <p>
+                        Gera uma proposta organizada para partilhares
+                        com o teu cliente.
+                    </p>
+                </article>
+
+                <article class="cartao-funcionalidade">
+                    <span class="icone-funcionalidade">04</span>
+                    <h3>Histórico e acompanhamento</h3>
+                    <p>
+                        Consulta os orçamentos guardados e acompanha
+                        o estado de cada proposta.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="faixa-preco">
+            <div>
+                <p class="etiqueta">SEM COMPROMISSO DURANTE O TESTE</p>
+
+                <h2>Experimenta durante 14 dias.</h2>
+
+                <p>
+                    Introduz o cartão no início. Se não cancelares antes
+                    do fim do teste, a subscrição passa a 9,90 €/mês.
+                </p>
+            </div>
+
+            <a class="botao-cta" href="#emailAcesso">Começar agora</a>
+        </section>
+
+        <!-- AUTENTICAÇÃO -->
+        <div id="acessoConta" class="painel auth-card">
+
+            <h2>Acede ao OrçaFácil</h2>
+
+            <p>Cria uma conta ou inicia sessão para continuares.</p>
+
+            <label>
+                Email
+                <input type="email" id="emailAcesso" required>
+            </label>
+
+            <label>
+                Palavra-passe
+                <input type="password" id="passwordAcesso" required minlength="6">
+            </label>
+
+            <div class="acoes">
+
+                <button type="button" id="registarConta" class="principal">
+                    Criar conta
+                </button>
+
+                <button type="button" id="iniciarSessao" class="secundario">
+                    Iniciar sessão
+                </button>
+
+            </div>
+
+            <button type="button" id="recuperarPassword" class="secundario">
+                Esqueci-me da palavra-passe
+            </button>
+
+            <p id="mensagemAutenticacao" role="status"></p>
+
+        </div>
+
+    </section>
+
+    <!-- ÁREA DA APLICAÇÃO -->
+    <main id="areaAplicacao" hidden>
+
+        <nav class="navegacao-lateral" aria-label="Navegação principal">
+            <div class="nav-titulo">MENU PRINCIPAL</div>
+
+            <a href="#areaTrabalho" class="nav-item ativo" data-seccao="painel">
+                <span class="nav-icone">⌂</span>
+                <span>Painel</span>
+            </a>
+
+            <a href="#formOrcamento" class="nav-item" data-seccao="orcamentos">
+                <span class="nav-icone">▤</span>
+                <span>Orçamentos</span>
+            </a>
+
+            <a href="#gestaoClientes" class="nav-item" data-seccao="clientes">
+                <span class="nav-icone">♙</span>
+                <span>Clientes</span>
+            </a>
+
+            <a href="#historicoOrcamentos" class="nav-item" data-seccao="historico">
+                <span class="nav-icone">◷</span>
+                <span>Histórico</span>
+            </a>
+
+            <a href="#minhaConta" class="nav-item" data-seccao="conta">
+                <span class="nav-icone">⚙</span>
+                <span>A minha conta</span>
+            </a>
+        </nav>
+
+        <div class="acoes">
+            <button type="button" id="terminarSessao" class="secundario">
+                Terminar sessão
+            </button>
+        </div>
+
+        <!-- A MINHA CONTA -->
+        <section id="minhaConta">
+
+            <h2>A minha conta</h2>
+
+            <p>
+                Estado da conta:
+                <strong id="estadoSubscricao">A carregar...</strong>
+            </p>
+
+            <p id="fimTrial"></p>
+
+            <p>Subscrição: 14 dias gratuitos e depois 9,90 €/mês.</p>
+
+            <p id="informacaoPagamento">
+                Ao aderires, introduzes o cartão. No final dos 14 dias,
+                será cobrado automaticamente o valor mensal de 9,90 €.
+            </p>
+
+            <button type="button" id="aderirSubscricao" onclick="iniciarPagamentoStripe()">
+                Aderir ao OrçaFácil
+            </button>
+
+        </section>
+
+        <div id="areaTrabalho">
+
+            <!-- APRESENTAÇÃO -->
+            <section class="intro">
+
+                <p class="etiqueta">SIMPLES · RÁPIDO · PROFISSIONAL</p>
+
+                <h1>Cria o teu próximo orçamento.</h1>
+
+                <p>
+                    Preenche os dados, adiciona os trabalhos
+                    e gera um documento PDF.
+                </p>
+
+            </section>
+
+            <!-- GESTÃO DE ORÇAMENTOS -->
+            <section class="painel">
+
+                <div class="acoes">
+
+                    <button type="button" id="novoOrcamento" class="secundario">
+                        + Novo orçamento
+                    </button>
+
+                    <button type="button" id="abrirHistorico" class="secundario">
+                        Histórico de orçamentos
+                    </button>
+
+                    <button type="button" id="exportarBackup" class="secundario">
+                        Exportar cópia de segurança
+                    </button>
+
+                    <button type="button" id="importarBackup" class="secundario">
+                        Importar cópia de segurança
+                    </button>
+
+                    <input type="file" id="ficheiroBackup" accept=".json,application/json" hidden>
+
+                </div>
+
+            </section>
+
+            <!-- HISTÓRICO DE ORÇAMENTOS -->
+            <section id="historicoOrcamentos" class="painel" hidden>
+
+                <h2>Histórico de orçamentos</h2>
+
+                <div id="listaOrcamentos"></div>
+
+            </section>
+
+            <!-- GESTÃO DE CLIENTES -->
+            <section id="gestaoClientes" class="painel">
+
+                <div class="titulo-linha">
+                    <div>
+                        <h2>Gestão de clientes</h2>
+                        <p>Regista e consulta os teus clientes.</p>
+                    </div>
+
+                    <button type="button" id="mostrarFormularioCliente" class="secundario">
+                        + Novo cliente
+                    </button>
+                </div>
+
+                <!-- FORMULÁRIO DE CLIENTE -->
+                <div id="formularioCliente" hidden>
+
+                    <h3>Dados do cliente</h3>
+
+                    <div class="grelha">
+
+                        <label>
+                            Nome ou empresa
+                            <input type="text" id="nomeCliente" placeholder="Nome do cliente">
+                        </label>
+
+                        <label>
+                            NIF
+                            <input type="text" id="nifCliente" inputmode="numeric" placeholder="NIF">
+                        </label>
+
+                        <label>
+                            Telefone
+                            <input type="text" id="telefoneCliente" placeholder="Contacto telefónico">
+                        </label>
+
+                        <label>
+                            Email
+                            <input type="email" id="emailCliente" placeholder="Email do cliente">
+                        </label>
+
+                        <label>
+                            Morada
+                            <input type="text" id="moradaCliente" placeholder="Morada completa">
+                        </label>
+
+                    </div>
+
+                    <div class="acoes">
+
+                        <button type="button" id="guardarCliente" class="principal">
+                            Guardar cliente
+                        </button>
+
+                        <button type="button" id="cancelarCliente" class="secundario">
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                    <p id="mensagemCliente" role="status"></p>
+
+                </div>
+
+                <!-- LISTA DE CLIENTES -->
+                <div id="listaClientes">
+
+                    <p>A carregar clientes...</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FORMULÁRIO -->
+            <form id="formOrcamento">
+
+                <!-- DADOS DO PROFISSIONAL -->
+                <section class="painel">
+
+                    <h2>1. Dados do profissional</h2>
+
+                    <div class="grelha">
+
+                        <label>
+                            Nome ou empresa
+                            <input id="empresa" type="text" required placeholder="Ex.: João Silva Construções">
+                        </label>
+
+                        <label>
+                            NIF
+                            <input id="nifEmpresa" type="text" inputmode="numeric" placeholder="NIF do profissional">
+                        </label>
+
+                        <label>
+                            Telefone ou email
+                            <input id="contacto" type="text" placeholder="Contacto profissional">
+                        </label>
+
+                        <label>
+                            Morada
+                            <input id="moradaEmpresa" type="text" placeholder="Morada do profissional">
+                        </label>
+
+                        <label>
+                            Logótipo da empresa
+                            <input id="logotipo" type="file" accept="image/png, image/jpeg">
+                        </label>
+
+                    </div>
+
+                </section>
+
+                <!-- DADOS DO CLIENTE -->
+                <section class="painel">
+
+                    <h2>2. Dados do cliente e proposta</h2>
+
+                    <div class="grelha">
+
+                        <label>
+                            Selecionar cliente
+                            <select id="clienteSelecionado">
+                                <option value="">Selecionar um cliente...</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Nome do cliente
+                            <input id="cliente" type="text" required placeholder="Nome do cliente">
+                        </label>
+
+                        <label>
+                            Local da obra
+                            <input id="moradaObra" type="text" placeholder="Morada da obra">
+                        </label>
+
+                        <label>
+                            Número do orçamento
+                            <input id="numero" type="text" required readonly>
+                        </label>
+
+                        <label>
+                            Data
+                            <input id="data" type="date" required>
+                        </label>
+
+                        <label>
+                            Validade da proposta
+                            <input id="validade" type="date" required>
+                        </label>
+
+                        <label>
+                            Estado do orçamento
+                            <select id="estadoOrcamento">
+                                <option value="Pendente">Pendente</option>
+                                <option value="Enviado ao cliente">Enviado ao cliente</option>
+                                <option value="Aceite">Aceite</option>
+                                <option value="Recusado">Recusado</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                </section>
+
+                <!-- TRABALHOS E MATERIAIS -->
+                <section class="painel">
+
+                    <div class="titulo-linha">
+
+                        <h2>3. Trabalhos e materiais</h2>
+
+                        <button type="button" id="adicionar" class="secundario">
+                            + Adicionar linha
+                        </button>
+
+                    </div>
+
+                    <div id="linhas">
+
+                        <div class="linha-trabalho">
+
+                            <label class="descricao">
+                                Descrição
+                                <input class="desc" type="text" required placeholder="Ex.: Pintura de paredes">
+                            </label>
+
+                            <label>
+                                Quantidade
+                                <input class="qtd" type="number" min="0.01" step="0.01" value="1" required>
+                            </label>
+
+                            <label>
+                                Preço unit. (€)
+                                <input class="preco-unit" type="number" min="0" step="0.01" value="100" required>
+                            </label>
+
+                            <label>
+                                IVA
+                                <select class="taxa">
+                                    <option value="23">23%</option>
+                                    <option value="13">13%</option>
+                                    <option value="6">6%</option>
+                                    <option value="0">0%</option>
+                                </select>
+                            </label>
+
+                            <button type="button" class="remover" aria-label="Remover linha">
+                                ×
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- TOTAIS -->
+                    <div class="totais">
+
+                        <p>
+                            Subtotal (sem IVA)
+                            <strong id="subtotal">0,00 €</strong>
+                        </p>
+
+                        <p>
+                            IVA total
+                            <strong id="totalIva">0,00 €</strong>
+                        </p>
+
+                        <p class="total-final">
+                            Total com IVA
+                            <strong id="total">0,00 €</strong>
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- CONDIÇÕES -->
+                <section class="painel">
+
+                    <h2>4. Condições da proposta</h2>
+
+                    <label>
+                        Notas, materiais incluídos ou condições de pagamento
+
+                        <textarea id="notas" rows="4"
+                            placeholder="Ex.: Prazo estimado de execução: 5 dias úteis. Condições de pagamento a acordar."></textarea>
+                    </label>
+
+                </section>
+
+                <!-- BOTÕES DE PDF E EMAIL -->
+                <div class="acoes">
+
+                    <button type="submit" class="principal">
+                        Gerar orçamento PDF
+                    </button>
+
+                    <button type="button" id="imprimir" class="secundario">
+                        Imprimir / Guardar em PDF
+                    </button>
+
+                    <button type="button" id="enviarEmail" class="secundario">
+                        Enviar por email
+                    </button>
+
+                </div>
+
+                <p id="mensagem" role="status" aria-live="polite"></p>
+
+            </form>
+
+            <!-- AVISO LEGAL -->
+            <p class="aviso">
+                Protótipo de elaboração de propostas comerciais.
+                Este documento não é uma fatura nem substitui
+                os documentos fiscais legalmente exigidos.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        OrçaFácil · Versão de demonstração
+    </footer>
+
+
+    <!-- JANELA DE ENVIO DE EMAIL -->
+    <div id="janelaEmail" class="modal-email" hidden>
+
+        <div class="conteudo-modal-email">
+
+            <h2>Enviar orçamento por email</h2>
+
+            <p>
+                Confirma o endereço de email onde pretendes enviar
+                o orçamento.
+            </p>
+
+            <label for="emailDestino">Email do cliente</label>
+
+            <input type="email" id="emailDestino" placeholder="cliente@exemplo.pt" required>
+
+            <div class="acoes-modal-email">
+
+                <button type="button" id="cancelarEmail" class="secundario">
+                    Cancelar
+                </button>
+
+                <button type="button" id="confirmarEmail" class="principal">
+                    Enviar orçamento
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BIBLIOTECA PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- BIBLIOTECA SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- CONFIGURAÇÃO SUPABASE -->
+    <script src="supabase-config.js"></script>
+
+    <!-- APLICAÇÃO -->
+    <script src="app.js"></script>
+
+    <!-- PAGAMENTOS STRIPE -->
+    <script src="pagamentos.js"></script>
+
+    <!-- AUTENTICAÇÃO -->
+    <script src="auth.js"></script>
+
+</body>
+
+</html>
