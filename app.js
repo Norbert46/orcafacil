@@ -958,12 +958,7 @@
         orcamentoAtualId = orcamento.id || null;
 
         calcular();
-        console.log("FORMULÁRIO PREENCHIDO");
-        console.log("Cliente:", campo("cliente").value);
-        console.log("Número:", campo("numero").value);
-        console.log("Estado:", campo("estadoOrcamento").value);
-        console.log("Formulário visível:", !form.hidden);
-        console.log("Altura do formulário:", form.offsetHeight);
+
         aRestaurarDados = false;
     }
 
@@ -2559,6 +2554,9 @@
                     if (acao === "abrir") {
                         // Carregar o orçamento selecionado
                         preencherFormulario(orcamento);
+
+                        // Abrir a secção dos orçamentos
+                        abrirPagina("orcamentos");
 
                         // Fechar o histórico
                         campo("historicoOrcamentos").hidden = true;
